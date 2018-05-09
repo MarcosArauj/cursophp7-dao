@@ -4,28 +4,28 @@
 
         public function __construct(){
             try {
-                $this->conn = new PDO("mysql:host=localhost;dbname=phpmysql", "root", "");
+                $this->conn = new PDO("mysql:host=localhost;dbname=php7", "root", "");
             } catch (PDOException $e) {
                 $e->getMessage();
             }
         }
 
-        private function setParams($parameters = array()){
+        private function setParams($statement, $parameters = array()){
 
             foreach ($parameters as $key => $value) {
-                $this->setParam($key,$value);
+                $this->setParam($statement,$key,$value);
             }
         }
 
-        private function setParam($statment, $key, $value) {
+        private function setParam($statement, $key, $value) {
 
-            $statment->bindParam($key,$value);
+            $statement->bindParam($key,$value);
         }
 
         public function query($rowQuery, $params = array()) {
             $stmt = $this->conn->prepare($rowQuery);
 
-            $this->setParams($params);
+            $this->setParams($stmt,$params);
 
             $stmt->execute();
 
