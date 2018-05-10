@@ -36,12 +36,20 @@ require_once("config.php");
 //
 //echo $aluno;
 
-/// Alterando Usuario
+//// Alterando Usuario
+//$usuario = new Usuario();
+//
+//$usuario->loadById(14);
+//
+//$usuario->update("Zezao","2222222");
+//
+//echo $usuario;
 
+////Excluir usuario
 $usuario = new Usuario();
 
-$usuario->loadById(14);
+$usuario->loadById(9);
 
-$usuario->update("Zezao","2222222");
+$usuario->delete();
 
 echo $usuario;
